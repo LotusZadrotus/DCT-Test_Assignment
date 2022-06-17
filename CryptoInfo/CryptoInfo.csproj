@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Models" />
+        <Folder Include="Pages" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Assets\Fonts\Poppins-ExtraLight.ttf" />
+      <None Remove="Assets\icons8-refresh-50.png" />
+      <Resource Include="Assets\icons8-refresh-50.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\icons8-search-40.png" />
+      <Resource Include="Assets\icons8-search-40.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\icons8-back-50.png" />
+      <Resource Include="Assets\icons8-back-50.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      
+      <Resource Include="Assets\icons8-home-40.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+</Project>
