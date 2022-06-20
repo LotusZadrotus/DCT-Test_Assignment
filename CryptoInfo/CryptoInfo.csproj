@@ -8,11 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Models" />
-        <Folder Include="Pages" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Resource Include="Assets\Fonts\Poppins-ExtraLight.ttf" />
       <None Remove="Assets\icons8-refresh-50.png" />
       <Resource Include="Assets\icons8-refresh-50.png">
@@ -33,6 +28,10 @@
       <Resource Include="Assets\icons8-home-40.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
 </Project>

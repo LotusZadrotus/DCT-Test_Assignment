@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptoInfo.ViewModels;
+using NavigationService = CryptoInfo.Services.NavigationService;
 
 namespace CryptoInfo
 {
@@ -23,6 +25,20 @@ namespace CryptoInfo
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MainWindowViewModel();
+            NavigationService.Service = MainFrame.NavigationService;
+            NavigationService.Navigate("main");
+        }
+
+        private void EventSetter_OnHandler(object sender, MouseButtonEventArgs e)
+        {
+            var t = DataContext as MainWindowViewModel;
+            
         }
     }
 }
