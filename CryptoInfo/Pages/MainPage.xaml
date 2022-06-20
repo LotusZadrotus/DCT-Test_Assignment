@@ -1,0 +1,30 @@
+﻿<Page x:Class="CryptoInfo.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CryptoInfo.Pages"
+      mc:Ignorable="d"
+      Title="MainPage" >
+    <Grid>
+        <Grid.Resources>
+            
+        </Grid.Resources>
+        <ListView HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding Assets}" FontSize="20">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Symbol}">Symbol</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Rank}">Rank</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=PriceUsd}">Price (USD)</GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Style>
+                <Style TargetType="ListView">
+                    <EventSetter Event="MouseDoubleClick" Handler="EventSetter_OnHandler"></EventSetter>
+                </Style>
+            </ListView.Style>
+        </ListView>
+    </Grid>
+</Page>
