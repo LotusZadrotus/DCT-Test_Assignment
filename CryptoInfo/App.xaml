@@ -5,10 +5,10 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          <!-- <FontFamily x:Key="Poppins" >pack://application:,,,/Fonts/#Poppins-ExtraLight</FontFamily> -->
-         <SolidColorBrush x:Key="Main" Color="#FF9700"></SolidColorBrush>
-         <SolidColorBrush x:Key="Secondary" Color="#FFC673"></SolidColorBrush>
+         <!-- <SolidColorBrush x:Key="Main" Color="#FF9700"></SolidColorBrush> -->
+         <!-- <SolidColorBrush x:Key="Secondary" Color="#FFC673"></SolidColorBrush> -->
          <Image x:Key="HomeIcon" Source="Assets/icons8-home-40.png" Height="40" Width="40"></Image>
          <Image x:Key="SearchIcon" Source="Assets/icons8-search-40.png" Height="40" Width="40"></Image>
-         <FontFamily x:Key="Poppins"></FontFamily>
+         <FontFamily x:Key="AnekLatin">pack://application:,,,/Assets/Fonts/AnekLatin-Regular.ttf #AnekLatin</FontFamily>
     </Application.Resources>
 </Application>

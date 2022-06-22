@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Main" Color="#331204"></SolidColorBrush>
+    <SolidColorBrush x:Key="Secondary" Color="#4D1F0A"></SolidColorBrush>
+    <SolidColorBrush x:Key="Back" Color="#3B2014" Opacity=".8"></SolidColorBrush>
+    <SolidColorBrush x:Key="BackAsset" Color="#3B2014" Opacity=".8"></SolidColorBrush>
+    <Style TargetType="TextBlock" x:Key="Text">
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    <!-- <Style TargetType="TextBlock"> -->
+    <!--     <Setter Property="Foreground" Value="White"></Setter> -->
+    <!-- </Style> -->
+    <Style TargetType="ListView">
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    <SolidColorBrush x:Key="TextColor" Color="White"></SolidColorBrush>
+    <Image Source="icons8-moon-symbol-40.png" x:Key="Theme"></Image>
+</ResourceDictionary>
