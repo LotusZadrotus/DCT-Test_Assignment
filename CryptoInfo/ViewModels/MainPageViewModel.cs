@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Documents;
 using CryptoInfo.Annotations;
 using CryptoInfo.Models;
@@ -25,12 +27,26 @@ public class MainPageViewModel: BaseViewModel
     private AssetsService _service;
     public MainPageViewModel()
     {
-        _service = new AssetsService();
-        _assets = _service.GetAssets();
+        try
+        {
+            _service = new AssetsService();
+            _assets = _service.GetAssets();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
 
     public override void Refresh()
     {
-        Assets = _service.GetAssets();
+        try
+        {
+            Assets = _service.GetAssets();
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
 }
