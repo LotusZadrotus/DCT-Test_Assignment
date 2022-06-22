@@ -12,22 +12,10 @@ public class MainWindowViewModel : BaseViewModel
 {
     private const string MainPage = "main";
     private const string SearchPage = "search";
-
-    private string _lastPage = "";
     public ICommand ToSearchPage { get; set; }
     public ICommand ToMainPage { get; set; }
-
-    public ICommand Refresh
-    {
-        get;
-        set;
-    }
-    public ICommand SelectAsset { get; }
-
-    private void GoToMainPage(INotifyPropertyChanged viewModel)
-    {
-        NavigationService.Navigate(MainPage);
-    }
+    public ICommand Refresh { get; set; }
+    public ICommand GoBack { get; }
 
     public Page Main { get; }
     public IViewModel MainViewModel { get; }
@@ -40,7 +28,8 @@ public class MainWindowViewModel : BaseViewModel
 
     public MainWindowViewModel()
     {
-        Refresh = new RelayCommand(x => NavigationService.Service.Refresh());
+        
+        
         Main = new MainPage();
         Search = new SearchPage();
         Asset = new AssetPage();
@@ -49,9 +38,13 @@ public class MainWindowViewModel : BaseViewModel
         AssetViewModel = new AssetViewModel();
         ToSearchPage = new RelayCommand(x=> NavigationService.Navigate(Search, SearchViewModel));
         ToMainPage = new RelayCommand(x => { NavigationService.Navigate(Main, MainViewModel); });
-        SelectAsset = new RelayCommand(x => MessageBox.Show("32"));
+        GoBack = new RelayCommand(x => NavigationService.GoBack());
+        Refresh = new RelayCommand(x => NavigationService.Refresh());
     }
     
-    
+    private void GoToMainPage(INotifyPropertyChanged viewModel)
+    {
+        NavigationService.Navigate(MainPage);
+    }
     
 }

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using CryptoInfo.Models;
 using Newtonsoft.Json;
@@ -28,17 +29,19 @@ public class AssetsService
         
             return result["data"].ToObject<Asset>();
         }
-
         throw new HttpRequestException(response.StatusCode.ToString());
     }
 
     public ObservableCollection<Asset> GetAssets()
     {
-        var response = _httpClient.GetAsync(API_URL + $"?limit={Limit}").Result.Content.ReadAsStringAsync();
-        var result =  JObject.Parse(response.Result);
+        var response = _httpClient.GetAsync(API_URL + $"?limit={Limit}").Result;
+        if (response.IsSuccessStatusCode)
+        {
+            var result =  JObject.Parse(response.Content.ReadAsStringAsync().Result);
         
-        return result["data"].ToObject<ObservableCollection<Asset>>();
-
+            return result["data"].ToObject<ObservableCollection<Asset>>();
+        }
+        throw new HttpRequestException(response.StatusCode.ToString());
     }
 
     public ObservableCollection<Asset> GetAssets(string? name)

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using CryptoInfo.Models;
 using CryptoInfo.Services;
@@ -28,7 +30,14 @@ public class SearchViewModel : BaseViewModel
 
     private void SearchMethod(object name)
     {
-        Assets = _service.GetAssets(name as string);
+        try
+        {
+            Assets = _service.GetAssets(name as string);
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
     }
 
 
