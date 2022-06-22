@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CryptoInfo.Pages"
       mc:Ignorable="d"
-      Title="SearchPage" x:Name="Page">
+      Title="search" x:Name="Page">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>
@@ -18,13 +18,57 @@
             <ListView Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{Binding Assets}" FontSize="20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}">Id</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Symbol}">Symbol</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Name</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Rank}">Rank</GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=PriceUsd}">Price (USD)</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Id}"
+                                        x:Name="Id">Id</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Symbol}"
+                                        x:Name="Symbol">Symbol</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Name}"
+                                        x:Name="Name">Name</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Rank}"
+                                        x:Name="Rank">Rank</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=PriceUsd, StringFormat={}{0:N3}}"
+                                        x:Name="Price">Price (USD)</GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.Template>
+                    <ControlTemplate>
+                        <Border BorderThickness="1" BorderBrush="{DynamicResource Secondary}" Background="{DynamicResource BackAsset}">
+                            <ScrollViewer>
+                                <Grid Margin="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition
+                                                Width="{Binding ElementName=Id,Path=ActualWidth}"></ColumnDefinition>
+                                            <ColumnDefinition
+                                                Width="{Binding ElementName=Symbol,Path=ActualWidth}"></ColumnDefinition>
+                                            <ColumnDefinition
+                                                Width="{Binding ElementName=Name,Path=ActualWidth}"></ColumnDefinition>
+                                            <ColumnDefinition
+                                                Width="{Binding ElementName=Rank,Path=ActualWidth}"></ColumnDefinition>
+                                            <ColumnDefinition
+                                                Width="{Binding ElementName=Price,Path=ActualWidth}"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="Exchange Id" 
+                                                   TextAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="1" Text="Rank" 
+                                                   TextAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="2" Text="Symbol" 
+                                                   TextAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="3" Text="Id"
+                                                   TextAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="4" Text="Price" 
+                                                   TextAlignment="Center"></TextBlock>
+                                    </Grid>
+                                    <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListView.Template>
                 <ListView.Style>
                     <Style TargetType="ListView">
                         <EventSetter Event="MouseDoubleClick" Handler="EventSetter_OnHandler"></EventSetter>
