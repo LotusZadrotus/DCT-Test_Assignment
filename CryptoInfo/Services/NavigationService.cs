@@ -14,6 +14,7 @@ public class NavigationService
     private static NavigationService _instance;
     private static readonly object sync = new();
     
+    
     private static NavigationService Instanse
     {
         get
@@ -38,18 +39,47 @@ public class NavigationService
     private void Navigated(object sender, NavigationEventArgs e)
     {
         if (e.Content is not Page page) return;
-        page.DataContext = e.ExtraData;
+        
+        // page.DataContext = e.ExtraData;
+        if (e.ExtraData is not null)
+        {
+            page.DataContext = e.ExtraData;
+        }
+        Refresh(page.Title);
     }
+
+    public static void Refresh()
+    {
+        if (Service.Content is Page page)
+        {
+            PageResolver.ViewModels[page.Title].Invoke().Refresh();
+        }
+    }
+
+    public static void Refresh(string name)
+    {
+        PageResolver.ViewModels[name].Invoke().Refresh();
+    }
+    
 
     public static void Navigate(Page page, IViewModel viewModel)
     {
         _instance._service.Navigate(page, viewModel);
+        
     }
     public static void Navigate(string name)
     {
         Navigate(PageResolver.Pages[name].Invoke(), PageResolver.ViewModels[name].Invoke());
     }
 
+    public static void GoBack()
+    {
+        if (Service.CanGoBack)
+        {
+            Service.GoBack();
+        }
+    }
+    
     public static void NavigateToAsset(string id)
     {
         var data = App.Current.MainWindow.DataContext as MainWindowViewModel;
@@ -66,7 +96,7 @@ public class NavigationService
             {
                 _instance._service.Navigated -= Instanse.Navigated;
             }
-
+            
             Instanse._service = value;
             Instanse._service.Navigated += Instanse.Navigated;
         }
