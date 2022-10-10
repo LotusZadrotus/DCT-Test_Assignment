@@ -49,13 +49,13 @@
                                         <ColumnDefinition
                                             Width="{Binding ElementName=Price,Path=ActualWidth}"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Exchange Id" 
+                                    <TextBlock Text="Id" 
                                                TextAlignment="Center"></TextBlock>
-                                    <TextBlock Grid.Column="1" Text="Rank" 
+                                    <TextBlock Grid.Column="1" Text="Symbol" 
                                                TextAlignment="Center"></TextBlock>
-                                    <TextBlock Grid.Column="2" Text="Symbol" 
+                                    <TextBlock Grid.Column="2" Text="Name" 
                                                TextAlignment="Center"></TextBlock>
-                                    <TextBlock Grid.Column="3" Text="Id"
+                                    <TextBlock Grid.Column="3" Text="Rank"
                                                TextAlignment="Center"></TextBlock>
                                     <TextBlock Grid.Column="4" Text="Price" 
                                                TextAlignment="Center"></TextBlock>
